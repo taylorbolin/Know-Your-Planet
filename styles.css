@@ -1,0 +1,43 @@
+html,body,.container {
+  height:100%;
+}
+.container {
+  display: table;
+  width: 100%;
+  padding-right: 0;
+  padding-left: 0;  
+  margin-right: auto;
+  margin-left: auto;
+}
+.row {
+  height: 100%;
+  display: table-row;
+}
+.col-md-3.no-float, .col-md-9.no-float {
+  float: none;
+}
+.col-md-3 {
+  display: table-cell;
+  background: #9dd1bb;
+  width: 25%;
+}
+.col-md-9 {
+  display: table-cell;
+  width: 75%;
+  background-image: url(http://i.imgur.com/XT5XDp8.jpg);
+  background-size: contain;
+  background-size: cover;
+}
+h2, h4, h5 {
+  text-align: center;
+  color: #005251;
+  font-family: merriweather;
+  font-weight: 400;
+}
+p {
+  color: #005251;
+  font-family: merriweather;
+  font-weight: 300;
+}
+
+
