@@ -18,26 +18,36 @@ html,body,.container {
 }
 .col-md-3 {
   display: table-cell;
-  background: #9dd1bb;
+  background: black;
   width: 25%;
 }
 .col-md-9 {
   display: table-cell;
   width: 75%;
-  background-image: url(http://i.imgur.com/XT5XDp8.jpg);
+ /* background-image: url(http://i.imgur.com/h2gHHT0.jpg);*/
+  background-image: url(http://7-themes.com/data_images/out/72/7020155-earth-view-space.jpg);
   background-size: contain;
   background-size: cover;
 }
-h2, h4, h5 {
+h2, h3 {
+  display: inline-block;
+}
+h2, h4, h5, h3 {
   text-align: center;
-  color: #005251;
+  color: white;
   font-family: merriweather;
   font-weight: 400;
+  text-shadow: 2px 2px 3px #7C7C7C;
 }
 p {
-  color: #005251;
+  color: white;
   font-family: merriweather;
   font-weight: 300;
+  font-size: 12px;
 }
+
+
+
+
 
 

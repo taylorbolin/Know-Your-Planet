@@ -4,34 +4,37 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Know Your Planet</title>
+	<title>Know Your Planet!</title>
 	<link href='https://fonts.googleapis.com/css?family=Merriweather:400,300' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="styles.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+  <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
 	<script src="script.js"></script>
 </head>
 <body>
 	<div class="container">
    	<div class="row">
-      <div class="col-md-3 no-float">
-        <h2>Know Your Planet</h2>
+      <div id="sidebar" class="col-md-3 no-float">
+        <header><h2>Know Y</h2><h3><i id="globe" class="fa fa-globe"></i></h3><h2>ur Planet!</h2><header>
         	<hr>
-        <h4>Your Mission:</h4>
-        	<p>Rules go here blah blah blah!</p>
-        	<button type="button" class="btn btn-info btn-md btn-block">New Game</button>
+        <h4>Mission:</h4>
+        	<p>Photos from around the globe will rotate to your right. The first player to correctly identify 10 images wins! Click <em>New Game</em> to begin.</p>
+        	<button id="new-game" type="button" class="btn btn-info btn-md btn-block">New Game</button>
         	<hr>
         <h4>Scoreboard:</h4>
         	<h5>Player 1:<h5>
         	<h5>Player 2:</h5>
         	<hr>
-        <h4>It's Player X's Turn!</h4>
-        	<button type="button" class="btn btn-primary btn-lg btn-block">Option A</button>
-        	<button type="button" class="btn btn-success btn-lg btn-block">Option B</button>
-        	<button type="button" class="btn btn-warning btn-lg btn-block">Option C</button>
-        	<button type="button" class="btn btn-danger btn-lg btn-block">Option D</button>
+        <h4>It's Player 1's turn!</h4>
+        	<button id="option-a" type="button" class="btn btn-primary btn-lg btn-block">Option A</button>
+        	<button id="option-b" type="button" class="btn btn-success btn-lg btn-block">Option B</button>
+        	<button id="option-c" type="button" class="btn btn-warning btn-lg btn-block">Option C</button>
+        	<button id="option-d" type="button" class="btn btn-danger btn-lg btn-block">Option D</button>
     	</div>
-  		<div class="col-md-9 no-float">
+  		<div id="image-space" class="col-md-9 no-float">
+  			<div id="landing-image" class="img-responsive" src="http://7-themes.com/data_images/out/72/7020155-earth-view-space.jpg">
+  			</div>
 			</div>
 		</div>
 	</div>
