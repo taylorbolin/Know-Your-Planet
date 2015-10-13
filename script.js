@@ -10,19 +10,19 @@ $(function(){
 
 	// other variables
 	var playerSwitch = true;
-// if ture, P1's turn, if false, P2's turn
-
 	var p1Score = 0;
 	var p2Score = 0;
 	var imageSpace = $('#image-space');
 	var roundCount = 0
+	// hide gameBox
+	$('.gameBox').hide();
 	
 	// data array
 	var data = [
 		{desc: 'Le Grau-du Roi, France', photo:'http://i.imgur.com/Lc474Zb.jpg'},
-		{desc: 'Glen Arbor, U.S.A.', photo: 'http://i.imgur.com/R81yiUP.jpg'},
+		{desc: 'Glen Arbor (Michigan), U.S.A.', photo: 'http://i.imgur.com/R81yiUP.jpg'},
 		{desc: 'Madrid, Spain', photo: 'http://i.imgur.com/gNxnIAP.jpg'},
-		{desc: 'Oakland, U.S.A', photo: 'http://i.imgur.com/ohn2Cdy.jpg'},
+		{desc: 'Oakland (California), U.S.A.', photo: 'http://i.imgur.com/ohn2Cdy.jpg'},
 		{desc: 'Korramshahr, Iran', photo: 'http://i.imgur.com/fUKcgIX.jpg'},
 		{desc: 'Guerrero Negro, Mexico', photo: 'http://i.imgur.com/1kOrYUR.jpg'},
 		{desc: 'Isla de Pascua, Chile', photo: 'http://i.imgur.com/ozRR0Ag.jpg'},
@@ -30,16 +30,16 @@ $(function(){
 		{desc: 'Pozoantiguo, Spain', photo: 'http://i.imgur.com/8ZXcLAy.jpg'},
 		{desc: 'Raffineria, Italy', photo: 'http://i.imgur.com/CbqOLoI.jpg'},
 		{desc: 'Bockhorst, Germany', photo: 'http://i.imgur.com/kn6bhzu.jpg'},
-		{desc: 'Kilua-Kona, U.S.A.', photo: 'http://i.imgur.com/CfbUJQr.jpg'},
+		{desc: 'Kilua-Kona (Hawaii), U.S.A.', photo: 'http://i.imgur.com/CfbUJQr.jpg'},
 		{desc: 'Erdene, Mongolia', photo: 'http://i.imgur.com/YglyoxW.jpg'},
 		{desc: 'Anadyrsky, Russia', photo: 'http://i.imgur.com/862PfdM.jpg'},
-		{desc: 'Kane County, U.S.A.', photo: 'http://i.imgur.com/1OYosle.jpg'},
+		{desc: 'Kane County (Utah), U.S.A.', photo: 'http://i.imgur.com/1OYosle.jpg'},
 		{desc: 'Petermann, Australia', photo: 'http://i.imgur.com/pGEpwZd.jpg'},
 		{desc: 'Dronten, Netherlands', photo: 'http://i.imgur.com/q0ZNbXm.jpg'},
 		{desc: 'Taolanaro, Madagascar', photo: 'http://i.imgur.com/19i62xb.jpg'},
 		{desc: 'Kizilsu, China', photo: 'http://i.imgur.com/H25iIyY.jpg'},
 		{desc: 'Lipie, Poland', photo: 'http://i.imgur.com/gXU32mB.jpg'},
-		{desc: 'Marble Canyon, U.S.A.', photo: 'http://i.imgur.com/07AloKY.jpg'},
+		{desc: 'Marble Canyon (Arizona), U.S.A.', photo: 'http://i.imgur.com/07AloKY.jpg'},
 		{desc: 'Osaka, Japan', photo: 'http://i.imgur.com/SNrKl8A.jpg'},
 		{desc: 'Forish, Uzbekistan', photo: 'http://i.imgur.com/HQh3xrY.jpg'},
 		{desc: 'Sintra, Portugal', photo: 'http://i.imgur.com/hfzrMId.jpg'},
@@ -47,11 +47,11 @@ $(function(){
 		{desc: 'Waddan, Libya', photo: 'http://i.imgur.com/D99cKFR.jpg'},
 		{desc: 'Fderik, Mauritania', photo: 'http://i.imgur.com/AkmHVQz.jpg'},
 		{desc: 'Fujinomiya, Japan', photo: 'http://i.imgur.com/5yppdFL.jpg'},
-		{desc: 'Moab, U.S.A.', photo: 'http://i.imgur.com/cX7NlMm.jpg'},
+		{desc: 'Moab (Utah), U.S.A.', photo: 'http://i.imgur.com/cX7NlMm.jpg'},
 		{desc: 'Baffin Region, Canada', photo: 'http://i.imgur.com/oZiW8jF.jpg'},
 		{desc: 'Qesm Siwah, Egypt', photo: 'http://i.imgur.com/cqD6Jdx.jpg'},
 		{desc: 'Onslow, Australia', photo: 'http://i.imgur.com/WkcCgUJ.jpg'},
-		{desc: 'Barcelos: Brazil', photo: 'http://i.imgur.com/h2gHHT0.jpg'},
+		{desc: 'Barcelos, Brazil', photo: 'http://i.imgur.com/h2gHHT0.jpg'},
 		{desc: 'Al Jawf, Libya', photo: 'http://i.imgur.com/UgLEPnS.jpg'},
 		{desc: 'Podgorica, Montenegro', photo: 'http://i.imgur.com/UY48whm.jpg'},
 		{desc: 'Isles of Scilly, U.K.', photo: 'http://i.imgur.com/u7Vo4Fq.jpg'},
@@ -74,37 +74,37 @@ $(function(){
     for(var j, x, i = o.length; i; j = Math.floor(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);
     return o;
 	};
-	// function to post shuffled image from array to image space NEED TO ADD PLACE DESC
+	// function to post shuffled image from array to image space
 	var postImage = function (num) {
-		// var thisImage = $('<img class="post-image" src="' + data[num].photo + '">')
-		// thisImage.appendTo(imageSpace);
 		imageSpace.css({'background-image':'url('+data[num].photo+')'})
-		// console.log(data[num].desc);
-		var buttons = [0, 1, 2, 3];
 		
+		// find a way to refactor this/make it DRY
+		// adds text to answer buttons
+		var buttons = [0, 1, 2, 3];
 		var index = Math.floor((Math.random()*buttons.length));
 		$('.answerOption').eq(buttons[index]).text(data[num].desc).addClass("correct");
 		buttons.splice(index, 1);
 
 		index = Math.floor((Math.random()*buttons.length));
-		$('.answerOption').eq(buttons[index]).text("button1");
+		$('.answerOption').eq(buttons[index]).text(data[num+1].desc).addClass("incorrect");
 		buttons.splice(index, 1);
 
 		index = Math.floor((Math.random()*buttons.length));
-		$('.answerOption').eq(buttons[index]).text("button2");
+		$('.answerOption').eq(buttons[index]).text(data[num+2].desc).addClass("incorrect");
 		buttons.splice(index, 1);
 
 		index = Math.floor((Math.random()*buttons.length));
-		$('.answerOption').eq(buttons[index]).text("button3");
+		$('.answerOption').eq(buttons[index]).text(data[num+3].desc).addClass("incorrect");
 		buttons.splice(index, 1);
 };
 
+	// alert notifying player if they chose the right/wrong choice and switch's player turn
 	$('.answerOption').on('click', function(e){
 		e.preventDefault();
 		if ($(this).hasClass("correct")) {
-			alert($(this).text());
+			alert("Slam dunk! "+$(this).text()+ " is the right answer.");
 		} else {
-			alert("incorrect");
+			alert("Wrong answer, better luck next time.");
 		}
 		playerSwitch = !playerSwitch; 
 		if (playerSwitch === true) {
@@ -114,13 +114,11 @@ $(function(){
 		};
 	});
 
-	// prodTitle.append('<p>'+data[num].desc+'</p>');
-
 	// need function to start game/reset board
 	var play = function () {
 		shuffle(data);
 		$(imageSpace).empty();
-		console.log(data);
+		$('.gameBox').show();
 		p1Score = 0;
 		p2Score = 0;
 		$('#p1-score').html(p1Score);
@@ -135,14 +133,22 @@ newGame.on('click', function(e){
 		play();
 	
 	});
-
-// need function to place location names in button options, not sure how to link image
-// that's appearing and location description in answer options menu
+// function to assign points to players
+	// var points = function (playerTurn) {
+	// 	if (playerTurn ===1 && $('.answerOption').hasClass("correct")) {
+	// 		return p1Score++ && postImage(roundCount++);
+	// 	}else if (playerTurn === 1 && $('.answerOption').hasClass("incorrect")) {
+	// 		return postImage(roundCount++);
+	// 	}else if(playerTurn === 2 && $('.answerOption').hasClass("correct")) {
+	// 		return p2Score++ && postImage(roundCount++);
+	// 	}else if (playerTurn ===2 && $('answerOption').hasClass("incorrect")) {
+	// 		return postImage(roundCount++);
+	// 	} else {
+	// 		return;
+	// 	};
+	// }
 
 // need function to count player points each round/determine who won round
-
-// need way to alert player that that picked correct answer or not? create sweet alert 
-// post answer to page
 
 	//sweet alert announcing winner
 	// 	var winner = function(p1Score,p2Score) {

@@ -15,3 +15,14 @@ things to consider:
 
 -instead of a pop-up window declaring the right or wrong answer, just have the answer appear below/above the text that indicated the turn. shit i don't know.
 
+things left to do:
+-make wins add up on the scoreboard
+-see if there's way to get player# and score on same line
+-make misc. desc names appear on answer buttons
+-sweet alerts for won rounds, and won game, update look and feel of buttons
+-add more photos and desc to data array
+-center heading
+-hide scoreboard and answer buttons
+-clean up code, don't need answer button IDs anymore
+-make side bar opaque space image?
+

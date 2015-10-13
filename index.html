@@ -9,20 +9,21 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="styles.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-  <!--<script src="path/to/sweet-alert.min.js"></script>
-  <link rel="stylesheet" href="path/to/sweet-alert.css"/> -->
+  <script src="dist/sweetalert.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="dist/sweetalert.css">
   <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
 	<script src="script.js"></script>
 </head>
 <body>
 	<div class="container">
    	<div class="row">
-      <div id="sidebar1" class="col-md-3 no-float">
+      <div id="sidebar1" class="col-md-3">
         <header><h2>Know Y</h2><h3><i id="globe" class="fa fa-globe"></i></h3><h2>ur Planet!</h2></header>
         	<hr>
         <h4>Mission:</h4>
         	<p>Photos from around the globe will rotate to your right. The first player to correctly identify 5 images wins! Click <em>New Game</em> to begin.</p>
         	<button id="new-game" type="button" class="btn btn-info btn-md btn-block">New Game</button>
+        <span class="gameBox">
         	<hr>
         <h4>Scoreboard:</h4>
         	<ul class="scoreboard">Player 1:</ul>
@@ -35,8 +36,9 @@
         	<button id="option-b" type="button" class="btn btn-success btn-md btn-block answerOption">Option B</button>
         	<button id="option-c" type="button" class="btn btn-warning btn-md btn-block answerOption">Option C</button>
         	<button id="option-d" type="button" class="btn btn-danger btn-md btn-block answerOption">Option D</button>
+        </span>
     	</div>
-  		<div id="image-space" class="col-md-9 no-float">
+  		<div id="image-space" class="col-md-9">
 			</div>
 		</div>
 	</div>
