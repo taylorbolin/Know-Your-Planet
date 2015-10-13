@@ -1,36 +1,44 @@
 html,body,.container {
-  height:100%;
+  height: 100%;
+  width: 100%;
+  position: relative;
 }
 .container {
-  display: table;
-  width: 100%;
-  padding-right: 0;
-  padding-left: 0;  
-  margin-right: auto;
-  margin-left: auto;
+  /*display: table;*/
+  /*width: 100%;*/
+  /*padding-right: 0;*/
+  /*padding-left: 0;  */
+  /*margin-right: 0;*/
+  /*margin-left: 0;*/
+  /*position: absolute;*/
 }
 .row {
-  height: 100%;
-  display: table-row;
+  /*height: 100%;*/
+  /*width: 100%;*/
+  /*margin: 0 auto;*/
+  /*display: table-row;*/
 }
 .col-md-3.no-float, .col-md-9.no-float {
-  float: none;
+  /*float: none;*/
 }
-.col-md-3 {
-  display: table-cell;
+.col-md-3{
+  /*display: table-cell;*/
   background: black;
-  width: 25%;
+  /*width: 24%;*/
+  height: 100vh;
 }
 .col-md-9 {
-  display: table-cell;
-  width: 75%;
- /* background-image: url(http://i.imgur.com/h2gHHT0.jpg);*/
+  /*display: table-cell;*/
+  /*width: 74%;*/
+  height: 100vh;
+  /*background-image: url(http://i.imgur.com/h2gHHT0.jpg);*/
   background-image: url(http://7-themes.com/data_images/out/72/7020155-earth-view-space.jpg);
   background-size: contain;
   background-size: cover;
 }
 h2, h3 {
   display: inline-block;
+  text-align: center;
 }
 h2, h4, h5, h3 {
   text-align: center;
@@ -39,14 +47,28 @@ h2, h4, h5, h3 {
   font-weight: 400;
   text-shadow: 2px 2px 3px #7C7C7C;
 }
-p {
+p, ul {
   color: white;
   font-family: merriweather;
   font-weight: 300;
   font-size: 12px;
 }
-
-
+ul {
+  margin: 0px;
+  color: white;
+  font-family: merriweather;
+  font-weight: 300;
+  font-size: 16px;
+}
+#image-space {
+  padding: 0px 0px 0px 0px;
+}
+.post-image{
+  /*max-width: 99%;*/
+  width: 100%;
+  padding: 0px;
+  /*max-height: 50%;*/
+}
 
 
 

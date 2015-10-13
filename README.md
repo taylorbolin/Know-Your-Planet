@@ -13,3 +13,5 @@ things to consider:
 -shorten long country names to initials so buttons don't get all fucked up
 -hide scoreboard and answer buttons before new game is clicked
 
+-instead of a pop-up window declaring the right or wrong answer, just have the answer appear below/above the text that indicated the turn. shit i don't know.
+
