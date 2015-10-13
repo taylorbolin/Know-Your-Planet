@@ -13,7 +13,7 @@ $(function(){
 	var p1Score = 0;
 	var p2Score = 0;
 	var imageSpace = $('#image-space');
-	var roundCount = 0
+	var roundCount = 10
 	// hide gameBox
 	$('.gameBox').hide();
 	
@@ -67,7 +67,38 @@ $(function(){
 		{desc: 'Mayo, Ireland', photo: 'http://i.imgur.com/cN5qNJO.jpg'},
 		{desc: 'Bulo-Burte, Somalia', photo: 'http://i.imgur.com/pkfLwlX.jpg'},
 		{desc: 'Paris, France', photo: 'http://i.imgur.com/mRLxIYg.jpg'},
-		{desc: 'El Bichar, Venezuela', photo: 'http://i.imgur.com/9gL0RwI.jpg'}];
+		{desc: 'El Bichar, Venezuela', photo: 'http://i.imgur.com/9gL0RwI.jpg'},
+		{desc: 'Al Gharbia, U.A.E', photo: 'http://i.imgur.com/wjGQLML.jpg'},
+		{desc: 'Al Jufrah, Libya', photo: 'http://i.imgur.com/YvMa5sC.jpg'},
+		{desc: 'Aldenhoven, Germany', photo: 'http://i.imgur.com/N35P2OC.jpg'},
+		{desc: 'Alert, Canada', photo: 'http://i.imgur.com/SeDwAng.jpg'},
+		{desc: 'Antartica Chilena, Chile', photo: 'http://i.imgur.com/Fe7tnwE.jpg'},
+		{desc: 'Bolivar Peninsula (Texas), U.S.A.', photo: 'http://i.imgur.com/svnvmu2.jpg'},
+		{desc: 'Dalian Shi, China', photo: 'http://i.imgur.com/Trx5nvv.jpg'},
+		{desc: 'Dorie, New Zealand', photo: 'http://i.imgur.com/rzQ5Nhg.jpg'},
+		{desc: 'Erongo, Namibia', photo: 'http://i.imgur.com/KVF9vI3.jpg'},
+		{desc: 'French Polynesia', photo: 'http://i.imgur.com/5lc238G.jpg'},
+		{desc: 'Greenland', photo: 'http://i.imgur.com/FKoZ5I9.jpg'},
+		{desc: 'Grootschermer, Netherlands', photo: 'http://i.imgur.com/R0nRYGE.jpg'},
+		{desc: 'Heikendorf, Germany', photo: 'http://i.imgur.com/LGLTcsQ.jpg'},
+		{desc: 'Kihei (Hawaii), U.S.A.', photo: 'http://i.imgur.com/dDZ8mnV.jpg'},
+		{desc: 'Lago Argentino, Argentina', photo: 'http://i.imgur.com/cE3XuBB.jpg'},
+		{desc: 'Marovoay, Madagascar', photo: 'http://i.imgur.com/iviWrnj.jpg'},
+		{desc: 'Marshall Islands', photo: 'http://i.imgur.com/SHkpE2j.jpg'},
+		{desc: 'Massah, Libya', photo: 'http://i.imgur.com/bQd9Gp1.jpg'},
+		{desc: 'Mohave Desert (Arizona), U.S.A.', photo: 'http://i.imgur.com/9iRqOIv.jpg'},
+		{desc: 'Mopti, Mali', photo: 'http://i.imgur.com/0gaBaE3.jpg'},
+		{desc: 'Newark (New Jersey), U.S.A.', photo: 'http://i.imgur.com/e3RJoU6.jpg'},
+		{desc: 'Ngari, China', photo: 'http://i.imgur.com/LG7CqBw.jpg'},
+		{desc: 'Niagara Falls, Canada', photo: 'http://i.imgur.com/cBkc5md.jpg'},
+		{desc: 'Nice, France', photo: 'http://i.imgur.com/50ehFBu.jpg'},
+		{desc: 'Seeb, Oman', photo: 'http://i.imgur.com/g6X1keX.jpg'},
+		{desc: 'The Bahamas', photo: 'http://i.imgur.com/iTzGVDB.jpg'},
+		{desc: 'Thoai Son, Vietnam', photo: 'http://i.imgur.com/mZg6lDf.jpg'},
+		{desc: 'Utersum, Germany', photo: 'http://i.imgur.com/VdohXHQ.jpg'},
+		{desc: 'Weifanng Shi, China', photo: 'http://i.imgur.com/zFJhgGv.jpg'},
+		{desc: 'Xhariep, South Africa', photo: 'http://i.imgur.com/hdtkqpW.jpg'},
+		{desc: 'Zug, Western Sahara', photo: 'http://i.imgur.com/bHjqEW8.jpg'}];
 
 	//function to shuffle data array
 	function shuffle(o){
@@ -86,15 +117,15 @@ $(function(){
 		buttons.splice(index, 1);
 
 		index = Math.floor((Math.random()*buttons.length));
-		$('.answerOption').eq(buttons[index]).text(data[num+1].desc).addClass("incorrect");
+		$('.answerOption').eq(buttons[index]).text(data[num+1].desc);
 		buttons.splice(index, 1);
 
 		index = Math.floor((Math.random()*buttons.length));
-		$('.answerOption').eq(buttons[index]).text(data[num+2].desc).addClass("incorrect");
+		$('.answerOption').eq(buttons[index]).text(data[num+2].desc);
 		buttons.splice(index, 1);
 
 		index = Math.floor((Math.random()*buttons.length));
-		$('.answerOption').eq(buttons[index]).text(data[num+3].desc).addClass("incorrect");
+		$('.answerOption').eq(buttons[index]).text(data[num+3].desc);
 		buttons.splice(index, 1);
 };
 
@@ -102,9 +133,9 @@ $(function(){
 	$('.answerOption').on('click', function(e){
 		e.preventDefault();
 		if ($(this).hasClass("correct")) {
-			alert("Slam dunk! "+$(this).text()+ " is the right answer.");
+			swal("Slam Dunk!", $(this).text()+" is the correct answer!", "success");
 		} else {
-			alert("Wrong answer, better luck next time.");
+			swal("Not Quite...", "Better luck next time, Globetrotter.", "error");
 		}
 		playerSwitch = !playerSwitch; 
 		if (playerSwitch === true) {
@@ -113,6 +144,38 @@ $(function(){
 			$('#playerTurn').text("2");
 		};
 	});
+	// $('.answerOption').on('click', function(e){
+	// 	e.preventDefault();
+	// 	if ($(this).hasClass("correct")) {
+	// 		swal("Slam Dunk!", $(this).text()+" is the correct answer.", "success");
+	// 			if (playerTurn === 1 && $('.answerOption').hasClass("correct")) {
+	// 				p1Score++;
+	// 				$('#p1-score').html(p1Score);
+	// 				roundCount++;
+	// 				postImage(roundCount);
+	// 			} else if (playerTurn === 2 && $('.answerOption').hasClass("correct")) {
+	// 				p2Score++;
+	// 				$('#p2-score').html(p2Score);
+	// 				roundCount++;
+	// 				postImage(roundCount);
+ //        }
+	// 	} else {
+	// 		swal("Not quite...", "Better luck next time, Globetrotter.", "error");
+	// 			if (playerTurn === 1 && $('.answerOption').hasClass("incorrect")) {
+	// 				roundCount++;
+	// 				postImage(roundCount);
+	// 			} else if (playerTurn === 2 && $('answerOption').hasClass("incorrect")) {
+	// 				roundCount++;
+	// 				postImage(roundCount);
+	// 	}
+	// 	playerSwitch = !playerSwitch; 
+	// 	if (playerSwitch === true) {
+	// 		$('#playerTurn').text("1");
+	// 	} else {
+	// 		$('#playerTurn').text("2");
+ //    }
+	// 	}
+	// });
 
 	// need function to start game/reset board
 	var play = function () {
@@ -123,6 +186,7 @@ $(function(){
 		p2Score = 0;
 		$('#p1-score').html(p1Score);
 		$('#p2-score').html(p2Score);
+		$('.answerOption').removeClass("correct");
 		postImage(roundCount);
 
 	};
@@ -133,16 +197,23 @@ newGame.on('click', function(e){
 		play();
 	
 	});
+
 // function to assign points to players
 	// var points = function (playerTurn) {
-	// 	if (playerTurn ===1 && $('.answerOption').hasClass("correct")) {
-	// 		return p1Score++ && postImage(roundCount++);
+	// 	if (playerTurn === 1 && $('.answerOption').hasClass("correct")) {
+	// 		p1Score++;
+	// 		roundCount++;
+	// 		postImage(roundCount);
 	// 	}else if (playerTurn === 1 && $('.answerOption').hasClass("incorrect")) {
-	// 		return postImage(roundCount++);
-	// 	}else if(playerTurn === 2 && $('.answerOption').hasClass("correct")) {
-	// 		return p2Score++ && postImage(roundCount++);
-	// 	}else if (playerTurn ===2 && $('answerOption').hasClass("incorrect")) {
-	// 		return postImage(roundCount++);
+	// 		roundCount++;
+	// 		postImage(roundCount);
+	// 	}else if (playerTurn === 2 && $('.answerOption').hasClass("correct")) {
+	// 		p2Score++;
+	// 		roundCount++;
+	// 		postImage(roundCount);
+	// 	}else if (playerTurn === 2 && $('answerOption').hasClass("incorrect")) {
+	// 		roundCount++;
+	// 		postImage(roundCount);
 	// 	} else {
 	// 		return;
 	// 	};

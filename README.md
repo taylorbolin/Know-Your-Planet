@@ -25,4 +25,5 @@ things left to do:
 -hide scoreboard and answer buttons
 -clean up code, don't need answer button IDs anymore
 -make side bar opaque space image?
+-buzzer? joe says use jquery keydown instead of keypress
 

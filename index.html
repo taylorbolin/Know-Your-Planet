@@ -9,8 +9,8 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="styles.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-  <script src="dist/sweetalert.min.js"></script>
-  <link rel="stylesheet" type="text/css" href="dist/sweetalert.css">
+  <script src="sweetalert.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="sweetalert.css">
   <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
 	<script src="script.js"></script>
 </head>
@@ -26,16 +26,14 @@
         <span class="gameBox">
         	<hr>
         <h4>Scoreboard:</h4>
-        	<ul class="scoreboard">Player 1:</ul>
-        		<ul id="p1-score" class="scoreboard score"></ul>
-   				<ul class="scoreboard">Player 2:</ul>
-   					<ul id="p2-score" class="scoreboard score"></ul>
+        <h5>Player 1: <span id="p1-score" class="scoreboard score"></span><h5>
+        <h5>Player 2: <span id="p2-score" class="scoreboard score"></span><h5>
         	<hr>
         <h4>It's Player <span id="playerTurn">1</span>'s turn!</h4>
-        	<button id="option-a" type="button" class="btn btn-primary btn-md btn-block answerOption">Option A</button>
-        	<button id="option-b" type="button" class="btn btn-success btn-md btn-block answerOption">Option B</button>
-        	<button id="option-c" type="button" class="btn btn-warning btn-md btn-block answerOption">Option C</button>
-        	<button id="option-d" type="button" class="btn btn-danger btn-md btn-block answerOption">Option D</button>
+        	<button id="option-a" type="button" class="btn btn-primary btn-lg btn-block answerOption">Option A</button>
+        	<button id="option-b" type="button" class="btn btn-success btn-lg btn-block answerOption">Option B</button>
+        	<button id="option-c" type="button" class="btn btn-warning btn-lg btn-block answerOption">Option C</button>
+        	<button id="option-d" type="button" class="btn btn-danger btn-lg btn-block answerOption">Option D</button>
         </span>
     	</div>
   		<div id="image-space" class="col-md-9">
