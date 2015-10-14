@@ -17,13 +17,14 @@ things to consider:
 
 things left to do:
 -make wins add up on the scoreboard
--see if there's way to get player# and score on same line
--make misc. desc names appear on answer buttons
 -sweet alerts for won rounds, and won game, update look and feel of buttons
--add more photos and desc to data array
 -center heading
--hide scoreboard and answer buttons
--clean up code, don't need answer button IDs anymore
--make side bar opaque space image?
--buzzer? joe says use jquery keydown instead of keypress
+-clean up code, don't need answer button IDs anymore and other stuff
+
+-clicking ok on swal needs to:
+	-update scoreboard
+	-rotate to next picture
+	-clear correct class
+	-shuffle data
+	-anything else?
 

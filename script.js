@@ -1,19 +1,14 @@
 $(function(){
-// console.log("JS page connected");
+console.log("JS page connected");
 
-	// button variables
+	// misc. variables
 	var newGame = $('#new-game');
-	var optionA = $('#option-a');
-	var optionB = $('#option-b');
-	var optionC = $('#option-c');
-	var optionD = $('#option-d');
-
-	// other variables
 	var playerSwitch = true;
 	var p1Score = 0;
 	var p2Score = 0;
 	var imageSpace = $('#image-space');
-	var roundCount = 10
+	var roundCount = 0;
+
 	// hide gameBox
 	$('.gameBox').hide();
 	
@@ -105,7 +100,7 @@ $(function(){
     for(var j, x, i = o.length; i; j = Math.floor(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);
     return o;
 	};
-	// function to post shuffled image from array to image space
+	// function to post shuffled image from array to imageSpace
 	var postImage = function (num) {
 		imageSpace.css({'background-image':'url('+data[num].photo+')'})
 		
@@ -133,9 +128,15 @@ $(function(){
 	$('.answerOption').on('click', function(e){
 		e.preventDefault();
 		if ($(this).hasClass("correct")) {
-			swal("Slam Dunk!", $(this).text()+" is the correct answer!", "success");
+			swal("Slam Dunk!", $(this).text()+" is the correct answer! Take your points and pat yourself on the back.", "success");
+				if (playerSwitch === true) {
+					nextTurnP1();
+				}else if (playerSwitch === false) {
+					nextTurnP2();
+				}
 		} else {
 			swal("Not Quite...", "Better luck next time, Globetrotter.", "error");
+			nextTurn();
 		}
 		playerSwitch = !playerSwitch; 
 		if (playerSwitch === true) {
@@ -144,40 +145,7 @@ $(function(){
 			$('#playerTurn').text("2");
 		};
 	});
-	// $('.answerOption').on('click', function(e){
-	// 	e.preventDefault();
-	// 	if ($(this).hasClass("correct")) {
-	// 		swal("Slam Dunk!", $(this).text()+" is the correct answer.", "success");
-	// 			if (playerTurn === 1 && $('.answerOption').hasClass("correct")) {
-	// 				p1Score++;
-	// 				$('#p1-score').html(p1Score);
-	// 				roundCount++;
-	// 				postImage(roundCount);
-	// 			} else if (playerTurn === 2 && $('.answerOption').hasClass("correct")) {
-	// 				p2Score++;
-	// 				$('#p2-score').html(p2Score);
-	// 				roundCount++;
-	// 				postImage(roundCount);
- //        }
-	// 	} else {
-	// 		swal("Not quite...", "Better luck next time, Globetrotter.", "error");
-	// 			if (playerTurn === 1 && $('.answerOption').hasClass("incorrect")) {
-	// 				roundCount++;
-	// 				postImage(roundCount);
-	// 			} else if (playerTurn === 2 && $('answerOption').hasClass("incorrect")) {
-	// 				roundCount++;
-	// 				postImage(roundCount);
-	// 	}
-	// 	playerSwitch = !playerSwitch; 
-	// 	if (playerSwitch === true) {
-	// 		$('#playerTurn').text("1");
-	// 	} else {
-	// 		$('#playerTurn').text("2");
- //    }
-	// 	}
-	// });
-
-	// need function to start game/reset board
+	// function to start game/reset board
 	var play = function () {
 		shuffle(data);
 		$(imageSpace).empty();
@@ -188,56 +156,49 @@ $(function(){
 		$('#p2-score').html(p2Score);
 		$('.answerOption').removeClass("correct");
 		postImage(roundCount);
-
 	};
 
-// new game button click event
-newGame.on('click', function(e){
-		e.preventDefault();
-		play();
+	var nextTurnP1 = function () {
+		shuffle(data);
+		p1Score++;
+		roundCount++;
+		$('#p1-score').html(p1Score);
+		$('.answerOption').removeClass("correct");
+		postImage(roundCount);
+	};
+
+	var nextTurnP2 = function () {
+		shuffle(data);
+		p2Score++;
+		roundCount++;
+		$('#p2-score').html(p2Score);
+		$('.answerOption').removeClass("correct");
+		postImage(roundCount);
+	};
+
+	var nextTurn = function () {
+		shuffle(data);
+		$('.answerOption').removeClass("correct");
+		postImage(roundCount);
+	};
 	
-	});
-
-// function to assign points to players
-	// var points = function (playerTurn) {
-	// 	if (playerTurn === 1 && $('.answerOption').hasClass("correct")) {
-	// 		p1Score++;
-	// 		roundCount++;
-	// 		postImage(roundCount);
-	// 	}else if (playerTurn === 1 && $('.answerOption').hasClass("incorrect")) {
-	// 		roundCount++;
-	// 		postImage(roundCount);
-	// 	}else if (playerTurn === 2 && $('.answerOption').hasClass("correct")) {
-	// 		p2Score++;
-	// 		roundCount++;
-	// 		postImage(roundCount);
-	// 	}else if (playerTurn === 2 && $('answerOption').hasClass("incorrect")) {
-	// 		roundCount++;
-	// 		postImage(roundCount);
-	// 	} else {
-	// 		return;
-	// 	};
-	// }
-
-// need function to count player points each round/determine who won round
-
 	//sweet alert announcing winner
-	// 	var winner = function(p1Score,p2Score) {
-	// 	if(p1Score === 5){
-	// 			swal({title: 'Player 1 wins!',
-	// 			text: "Put some text here",
-	// 			imageUrl: "put an image here",
-	// 			imageSize: "put window size here (ex. 300X300"});
-	// 	} else if (p2Score === 5){
-	// 			swal({title: 'Player 2 wins!',
-	// 			text: "Put some text here",
-	// 			imageUrl: "put an image here",
-	// 			imageSize: "put window size here (ex. 300X300"});
-	// 	} else {
-	// 		return;
-	// 	}
-	// };
-
+		var winner = function(p1Score,p2Score) {
+		if(p1Score === 1){
+				
+		} else if (p2Score === 2){
+				
+		} else {
+			return;
+		}
+	};
+	winner();
+// new game button click event
+	newGame.on('click', function(e){
+			e.preventDefault();
+			play();
+			
+		});
 	// need way to reset board after winner wins? Some other games have it, some don't
 });
 

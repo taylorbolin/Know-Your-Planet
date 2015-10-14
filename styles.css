@@ -10,7 +10,6 @@ html,body,.container {
 .col-md-9 {
   height: 100vh;
   background-image: url(http://i.imgur.com/eUDzVyT.jpg);
-  /*background-image: url(http://7-themes.com/data_images/out/72/7020155-earth-view-space.jpg);*/
   background-size: contain;
   background-size: cover;
 }
@@ -39,13 +38,9 @@ ul {
   font-weight: 300;
   font-size: 16px;
 }
-/*#image-space {
-  padding: 0px 0px 0px 0px;
+.btn:focus {
+  outline: none;
 }
-.post-image{
-  width: 100%;
-  padding: 0px;
-}*/
 
 
 
