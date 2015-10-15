@@ -93,10 +93,29 @@ console.log("JS page connected");
 		{desc: 'Utersum, Germany', photo: 'http://i.imgur.com/VdohXHQ.jpg'},
 		{desc: 'Weifanng Shi, China', photo: 'http://i.imgur.com/zFJhgGv.jpg'},
 		{desc: 'Xhariep, South Africa', photo: 'http://i.imgur.com/hdtkqpW.jpg'},
-		{desc: 'Zug, Western Sahara', photo: 'http://i.imgur.com/bHjqEW8.jpg'}];
+		{desc: 'Zug, Western Sahara', photo: 'http://i.imgur.com/bHjqEW8.jpg'},
+		{desc: 'Al Fasher, Sudan', photo: 'http://i.imgur.com/g2orGEP.jpg'},
+		{desc: 'Amherst (Texas), U.S.A.', photo: 'http://i.imgur.com/rlJJivr.jpg'},
+		{desc: 'Aerbaijan, Iran', photo: 'http://i.imgur.com/xtuemty.jpg'},
+		{desc: 'Beegden, Netherlands', photo: 'http://i.imgur.com/uTIGnbm.jpg'},
+		{desc: 'Binzhou Shi, China', photo: 'http://i.imgur.com/QUPMjZZ.jpg'},
+		{desc: 'Colombiers, France', photo: 'http://i.imgur.com/nXjzRFH.jpg'},
+		{desc: 'Deltebre, Spain', photo: 'http://i.imgur.com/upPflxn.jpg'},
+		{desc: 'Drieborg, Netherlands', photo: 'http://i.imgur.com/vvnQ6Zu.jpg'},
+		{desc: 'Dubai, U.A.E.', photo: 'http://i.imgur.com/NTWks8a.jpg'},
+		{desc: 'Emmigen-Lipingen, Germany', photo: 'http://i.imgur.com/p6RJ3vR.jpg'},
+		{desc: 'Glynneath, U.K.', photo: 'http://i.imgur.com/VO9XL5c.jpg'},
+		{desc: 'Kastrup, Denmark', photo: 'http://i.imgur.com/GBeIUIT.jpg'},
+		{desc: 'Kumarina, Australia', photo: 'http://i.imgur.com/S7jajyD.jpg'},
+		{desc: 'Monaco', photo: 'http://i.imgur.com/7bcUqTA.jpg'},
+		{desc: 'Narva, Estonia', photo: 'http://i.imgur.com/6FhsmFJ.jpg'},
+		{desc: 'New York (New York), U.S.A.', photo: 'http://i.imgur.com/BjfkEcX.jpg'},
+		{desc: 'Tambong Song Khlong, Thailand', photo: 'http://i.imgur.com/RRn0uCF.jpg'},
+		{desc: 'Washington D.C., U.S.A.', photo: 'http://i.imgur.com/XqofJUd.jpg'},
+		{desc: 'Zermatt, Switzerland', photo: 'http://i.imgur.com/RqFyhds.jpg'}];
 
 	//function to shuffle data array
-	function shuffle(o){
+	var shuffle = function (o){
     for(var j, x, i = o.length; i; j = Math.floor(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);
     return o;
 	};
@@ -104,7 +123,6 @@ console.log("JS page connected");
 	var postImage = function (num) {
 		imageSpace.css({'background-image':'url('+data[num].photo+')'})
 		
-		// find a way to refactor this/make it DRY
 		// adds text to answer buttons
 		var buttons = [0, 1, 2, 3];
 		var index = Math.floor((Math.random()*buttons.length));
@@ -123,28 +141,54 @@ console.log("JS page connected");
 		$('.answerOption').eq(buttons[index]).text(data[num+3].desc);
 		buttons.splice(index, 1);
 };
+// add points to players 
+var addPoint = function (){
+	if (playerSwitch === true) {
+		p1Score++;
+	}else if (playerSwitch === false) {
+		p2Score++;
+}
+};
 
-	// alert notifying player if they chose the right/wrong choice and switch's player turn
+// function to alert players of wins, turns over player
 	$('.answerOption').on('click', function(e){
-		e.preventDefault();
-		if ($(this).hasClass("correct")) {
-			swal("Slam Dunk!", $(this).text()+" is the correct answer! Take your points and pat yourself on the back.", "success");
-				if (playerSwitch === true) {
-					nextTurnP1();
-				}else if (playerSwitch === false) {
-					nextTurnP2();
+			e.preventDefault();
+			if ($(this).hasClass("correct")) {
+			addPoint();	
+				if (p1Score >=5 ) {
+					swal({title: "Player One Wins",
+					text: "You're an Atlas All-Star!"});
+					play();
+
+				}else if(p2Score >=5) {
+					swal({title: "Player Two Wins",
+					text: "You're an Atlas All-Star!"});
+					play();
+
+				}else{
+
+					swal("Slam Dunk!", $(this).text()+" is the correct answer! Take your points and pat yourself on the back.", "success");
+					if (playerSwitch === true) {
+							nextTurnP1();
+					}else if (playerSwitch === false) {
+							nextTurnP2();
+					}
 				}
-		} else {
-			swal("Not Quite...", "Better luck next time, Globetrotter.", "error");
-			nextTurn();
-		}
-		playerSwitch = !playerSwitch; 
-		if (playerSwitch === true) {
-			$('#playerTurn').text("1");
-		} else {
-			$('#playerTurn').text("2");
-		};
-	});
+			}
+
+			else{
+				swal("Not Quite...", "Better luck next time, Globetrotter.", "error");
+				nextTurn();
+				}
+
+			playerSwitch = !playerSwitch; 
+			if (playerSwitch === true) {
+				$('#playerTurn').text("1");
+			} else {
+				$('#playerTurn').text("2");
+			}
+		});
+	
 	// function to start game/reset board
 	var play = function () {
 		shuffle(data);
@@ -160,7 +204,6 @@ console.log("JS page connected");
 
 	var nextTurnP1 = function () {
 		shuffle(data);
-		p1Score++;
 		roundCount++;
 		$('#p1-score').html(p1Score);
 		$('.answerOption').removeClass("correct");
@@ -169,7 +212,6 @@ console.log("JS page connected");
 
 	var nextTurnP2 = function () {
 		shuffle(data);
-		p2Score++;
 		roundCount++;
 		$('#p2-score').html(p2Score);
 		$('.answerOption').removeClass("correct");
@@ -182,23 +224,11 @@ console.log("JS page connected");
 		postImage(roundCount);
 	};
 	
-	//sweet alert announcing winner
-		var winner = function(p1Score,p2Score) {
-		if(p1Score === 1){
-				
-		} else if (p2Score === 2){
-				
-		} else {
-			return;
-		}
-	};
-	winner();
-// new game button click event
+	// new game/board reset
 	newGame.on('click', function(e){
 			e.preventDefault();
 			play();
 			
 		});
-	// need way to reset board after winner wins? Some other games have it, some don't
 });
 

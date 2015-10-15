@@ -1,10 +1,10 @@
 # my-game
 
--'new game' button should start game and push random image from array onto screen as well as use same array to shuffle through answer options. by default, player 1 will go first.
--if a player chooses the correct answer, a sweet alert should appear on the screen informing them of this, and their player score should increase by one.
--alternativly, if a player chooses the wrong answer, a sweet alert should inform them of that and obviously their score will not change.
--the sweet alert must also flip the board over to the next player and change the photo.
--the first player to correctly identify 5 (maybe 10) images will win and a different sweet alert will declare the winner. Once the sweet alert is clicked, the board will reset. new game button should also have the power to reset the board.
+#'new game' button should start game and push random image from array onto screen as well as use same array to shuffle through answer options. by default, player 1 will go first.
+###if a player chooses the correct answer, a sweet alert should appear on the screen informing them of this, and their player score should increase by one.
+*alternativly, if a player chooses the wrong answer, a sweet alert should inform them of that and obviously their score will not change.
+*the sweet alert must also flip the board over to the next player and change the photo.
+*the first player to correctly identify 5 (maybe 10) images will win and a different sweet alert will declare the winner. Once the sweet alert is clicked, the board will reset. new game button should also have the power to reset the board.
 
 things to consider:
 -use of jquery in image animationn(can't find anything that doesn't look cheesy at the moment). maybe find the nasa site again with ht e hi def mpgs and use the jquery video background from lecture
@@ -27,4 +27,28 @@ things left to do:
 	-clear correct class
 	-shuffle data
 	-anything else?
+
+	for Read me:
+	about, technologies used, photo sources, intent, future plans
+	// alert notifying player if they chose the right/wrong choice and switch's player turn
+	// $('.answerOption').on('click', function(e){
+	// 	e.preventDefault();
+	// 	if ($(this).hasClass("correct")) {
+	// 		swal("Slam Dunk!", $(this).text()+" is the correct answer! Take your points and pat yourself on the back.", "success");
+	// 			if (playerSwitch === true) {
+	// 				nextTurnP1();
+	// 			}else if (playerSwitch === false) {
+	// 				nextTurnP2();
+	// 			}
+	// 	} else {
+	// 		swal("Not Quite...", "Better luck next time, Globetrotter.", "error");
+	// 		nextTurn();
+	// 	}
+	// 	playerSwitch = !playerSwitch; 
+	// 	if (playerSwitch === true) {
+	// 		$('#playerTurn').text("1");
+	// 	} else {
+	// 		$('#playerTurn').text("2");
+	// 	};
+	// });
 
